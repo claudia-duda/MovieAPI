@@ -47,3 +47,5 @@ C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\runtimes\win\l
 C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\ZstdNet.dll
 C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll

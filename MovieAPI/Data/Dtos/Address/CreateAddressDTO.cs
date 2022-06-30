@@ -9,9 +9,9 @@ namespace MovieAPI.Data.Dtos
 {
     public class CreateAddressDTO
     {
-        public string Logradouro { get; set; }
-        public string Bairro { get; set; }
-        public int Numero { get; set; }
-        
+        public string Street { get; set; }
+        public string Region { get; set; }
+        public int Number { get; set; }
+
     }
 }
