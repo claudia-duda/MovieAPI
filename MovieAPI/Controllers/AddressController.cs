@@ -24,22 +24,22 @@ namespace MovieAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdicionaAddress([FromBody] CreateAddressDTO addressDto)
+        public IActionResult PostAddress([FromBody] CreateAddressDTO addressDto)
         {
             Address address = _mapper.Map<Address>(addressDto);
             _context.Addresses.Add(address);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(RecuperaAddresssPorId), new { Id = address.Id }, address);
+            return CreatedAtAction(nameof(GetAddress), new { Id = address.Id }, address);
         }
 
         [HttpGet]
-        public IEnumerable<Address> RecuperaAddresss()
+        public IEnumerable<Address> GetAllAdresses()
         {
             return _context.Addresses;
         }
 
         [HttpGet("{id}")]
-        public IActionResult RecuperaAddresssPorId(int id)
+        public IActionResult GetAddress(int id)
         {
             Address address = _context.Addresses.FirstOrDefault(address => address.Id == id);
             if (address != null)
@@ -52,7 +52,7 @@ namespace MovieAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizaAddress(int id, [FromBody] UpdateAddressDTO addressDto)
+        public IActionResult PutAddress(int id, [FromBody] UpdateAddressDTO addressDto)
         {
             Address address = _context.Addresses.FirstOrDefault(address => address.Id == id);
             if (address == null)
@@ -66,7 +66,7 @@ namespace MovieAPI.Controllers
 
 
         [HttpDelete("{id}")]
-        public IActionResult DeletaAddress(int id)
+        public IActionResult DeleteAddress(int id)
         {
             Address address = _context.Addresses.FirstOrDefault(address => address.Id == id);
             if (address == null)

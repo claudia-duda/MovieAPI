@@ -16,5 +16,6 @@ namespace MovieAPI.Data.Dtos
         [Required(ErrorMessage = "The field Name is required")]
         public string Name { get; set; }
         public Address Address { get; set; }
+        public Manager Manager { get; set; }
     }
 }

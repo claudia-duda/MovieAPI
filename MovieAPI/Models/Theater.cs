@@ -13,6 +13,10 @@ namespace MovieAPI.Models
         public virtual Address Address { get; set; }
         [JsonIgnore]
         public int AddressId { get; set; }
+         [JsonIgnore]
+        public virtual Manager Manager { get; set; }
+        [JsonIgnore]
+        public int ManagerId { get; set; }
 
 
     }
