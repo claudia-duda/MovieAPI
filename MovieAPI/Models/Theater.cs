@@ -11,11 +11,8 @@ namespace MovieAPI.Models
         [Required(ErrorMessage = "The field Name is required")]
         public string Name { get; set; }
         public virtual Address Address { get; set; }
-        [JsonIgnore]
         public int AddressId { get; set; }
-         [JsonIgnore]
         public virtual Manager Manager { get; set; }
-        [JsonIgnore]
         public int ManagerId { get; set; }
 
 

@@ -7,7 +7,7 @@ namespace MovieAPI.Data.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Theater> Theaters { get; set; }
+        public object Theaters { get; set; }
 
     }
 }
