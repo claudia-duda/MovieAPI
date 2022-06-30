@@ -6,7 +6,7 @@ using MovieAPI.Data;
 
 namespace MovieAPI.Migrations
 {
-    [DbContext(typeof(MovieContext))]
+    [DbContext(typeof(AppDbContext))]
     partial class MovieContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -14,7 +14,7 @@ namespace MovieAPI.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.5");
+                .HasAnnotation("ProductVersion", "5.0.17");
 
             modelBuilder.Entity("MovieAPI.Models.Movie", b =>
                 {
@@ -40,6 +40,21 @@ namespace MovieAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("MovieAPI.Models.Theater", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Theaters");
                 });
 #pragma warning restore 612, 618
         }
