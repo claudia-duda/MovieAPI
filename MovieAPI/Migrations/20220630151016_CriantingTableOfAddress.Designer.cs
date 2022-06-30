@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieAPI.Data;
 
 namespace MovieAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20220630151016_CriantingTableOfAddress")]
+    partial class CriantingTableOfAddress
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
