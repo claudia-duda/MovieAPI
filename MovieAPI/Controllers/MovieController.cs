@@ -21,7 +21,7 @@ namespace MovieAPI.Controllers
             _context = context;
             _mapper = mapper;
         }
-       
+
         [HttpPost]
         public IActionResult PostMovie([FromBody] CreateMovieDTO movieDto)
         {
@@ -31,10 +31,23 @@ namespace MovieAPI.Controllers
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetMovie), new { Id = movie.Id }, movie);
         }
+
         [HttpGet]
-        public IEnumerable<Movie> GetAllMovies()
+        public IActionResult GetMovies([FromQuery] int? classification)
         {
-            return _context.Movies;
+            if (classification == null)
+            {
+                return Ok(_context.Movies.ToList());
+            }
+
+            List<Movie> movies = _context.Movies
+                    .Where(movie => movie.Classification <= classification).ToList();
+            if (movies != null)
+            {
+                List<ReadMovieDTO> readDto = _mapper.Map<List<ReadMovieDTO>>(movies);
+                return Ok(readDto);
+            }
+            return NotFound();
         }
 
         [HttpGet("{id}")]
