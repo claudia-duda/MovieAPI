@@ -12,5 +12,6 @@ namespace MovieAPI.Data.Dtos
         public string Gender { get; set; }
         [Range(1, 300, ErrorMessage = "Duration have ot be into 1 and 120")]
         public int Duration { get; set; } 
+        public int Classification { get; set; }
     }
 }
