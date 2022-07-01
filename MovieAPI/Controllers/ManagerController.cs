@@ -39,5 +39,17 @@ namespace MovieAPI.Controllers
             }
             return NotFound();
         }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteManager(int id)
+        {
+            Manager manager = _context.Managers.FirstOrDefault(manager => manager.Id == id);
+            if (manager == null)
+            {
+                return NotFound();
+            }
+            _context.Remove(manager);
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }

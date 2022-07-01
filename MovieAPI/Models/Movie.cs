@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace MovieAPI.Models
 {
@@ -15,6 +17,7 @@ namespace MovieAPI.Models
         public string Gender { get; set; }
         [Range(1, 300, ErrorMessage = "Duration have ot be into 1 and 120")]
         public int Duration { get; set; }
-
+        [JsonIgnore]
+        public virtual List<Session> Sessions { get; set; }
     }
 }
