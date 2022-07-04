@@ -49,3 +49,5 @@ C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\obj\Debug\net5.0\refint\MovieAP
 C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\obj\Debug\net5.0\MovieAPI.pdb
 C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\obj\Debug\net5.0\MovieAPI.genruntimeconfig.cache
 C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\obj\Debug\net5.0\ref\MovieAPI.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\FluentResults.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll

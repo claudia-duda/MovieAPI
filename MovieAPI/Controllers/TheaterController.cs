@@ -5,7 +5,8 @@ using MovieAPI.Data;
 using MovieAPI.Models;
 using System.Collections.Generic;
 using System.Linq;
-
+using MovieAPI.Services;
+using FluentResults;
 
 namespace MovieAPI.Controllers
 {
@@ -13,69 +14,45 @@ namespace MovieAPI.Controllers
     [Route("[controller]")]
     public class TheaterController : ControllerBase
     {
-        private AppDbContext _context;
-        private IMapper _mapper;
+        private TheaterService _service;
 
-        public TheaterController(AppDbContext context, IMapper mapper)
+        public TheaterController(TheaterService service)
         {
-            _context = context;
-            _mapper = mapper;
+            _service = service;
         }
   
 
         [HttpPost]
         public IActionResult PostTheater([FromBody] CreateTheaterDTO Theater)
         {
-            Theater theater = _mapper.Map<Theater>(Theater);
-            _context.Theaters.Add(theater);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(GetTheater), new { Id = theater.Id }, theater);
+            ReadTheaterDTO theaterDto = _service.AddTheater(Theater);
+            return CreatedAtAction(nameof(GetTheater), new { Id = theaterDto.Id }, theaterDto);
         }
 
         [HttpGet]
-        public IActionResult GetAllTheaters([FromQuery] string MovieName)
+        public IActionResult GetAllTheaters([FromQuery] string theaterName)
         {
-            List<Theater> theaters = _context.Theaters.ToList();
-            if(theaters == null)
-            {
-                return NotFound();
-            }
-            if(!string.IsNullOrEmpty(MovieName))
-            {
-                IEnumerable<Theater> query = from theater in theaters
-                        where theater.Sessions.Any(
-                            session => session.Movie.Title == MovieName)
-                        select theater;
+            List<ReadTheaterDTO> theatersDto = _service.GetAllTheaters(theaterName);
+            if (theatersDto != null) return Ok(theatersDto);
 
-                theaters = query.ToList();
-            }
-            List<ReadTheaterDTO> readDto = _mapper.Map<List<ReadTheaterDTO>>(theaters);
-            return Ok(readDto);
-
+            return NotFound();
         }
 
         [HttpGet("{id}")]
         public IActionResult GetTheater(int id)
         {
-            Theater theater = _context.Theaters.FirstOrDefault(theater => theater.Id == id);
-            if(theater != null)
-            {
-                ReadTheaterDTO theaterDto = _mapper.Map<ReadTheaterDTO>(theater);
-                return Ok(theaterDto);
-            }
+            ReadTheaterDTO theaterDto = _service.GetTheater(id);
+
+            if (theaterDto != null) return Ok(theaterDto);
+
             return NotFound();
         }
 
         [HttpPut("{id}")]
         public IActionResult PutTheater(int id, [FromBody] UpdateTheaterDTO theaterDto)
         {
-            Theater theater = _context.Theaters.FirstOrDefault(theater => theater.Id == id);
-            if(theater == null)
-            {
-                return NotFound();
-            }
-            _mapper.Map(theaterDto, theater);
-            _context.SaveChanges();
+            Result result = _service.PutTheater(id, theaterDto);
+            if (result.IsFailed) return NotFound();
             return NoContent();
         }
 
@@ -83,13 +60,8 @@ namespace MovieAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteTheater(int id)
         {
-            Theater theater = _context.Theaters.FirstOrDefault(theater => theater.Id == id);
-            if (theater == null)
-            {
-                return NotFound();
-            }
-            _context.Remove(theater);
-            _context.SaveChanges();
+            Result result = _service.DeleteTheater(id);
+            if (result.IsFailed) return NotFound();
             return NoContent();
         }
 

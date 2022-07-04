@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using MovieAPI.Data;
 using MovieAPI.Data.Dtos;
 using MovieAPI.Models;
+using MovieAPI.Services;
 using System.Linq;
 
 namespace MovieAPI.Controllers
@@ -11,44 +13,34 @@ namespace MovieAPI.Controllers
     [Route("[controller]")]
     public class ManagerController : ControllerBase
     {
-        private AppDbContext _context;
-        private IMapper _mapper;
+        private ManagerService _service;
 
-        public ManagerController(AppDbContext context, IMapper mapper)
+        public ManagerController(ManagerService service)
         {
-            _context = context;
-            _mapper = mapper;
+            _service = service;
         }
+
         [HttpPost]
-        public IActionResult PostManager(CreateManagerDTO managerdto)
+        public IActionResult PostManager(CreateManagerDTO managerDto)
         {
-            Manager manager = _mapper.Map<Manager>(managerdto);
-            _context.Managers.Add(manager);
-            _context.SaveChanges();
+            ReadManagerDTO manager = _service.AddManager(managerDto);
+            
             return CreatedAtAction(nameof(GetManager), new { Id = manager.Id }, manager);
         }
+
         [HttpGet("{id}")]
         public IActionResult GetManager(int id)
         {
-            Manager manager = _context.Managers.FirstOrDefault(manager => manager.Id == id);
-            if (manager != null)
-            {
-                ReadManagerDTO managerDto = _mapper.Map<ReadManagerDTO>(manager);
-
-                return Ok(managerDto);
-            }
+            ReadManagerDTO manager = _service.GetManager(id);
+            if (manager != null) return Ok(manager);
             return NotFound();
         }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteManager(int id)
         {
-            Manager manager = _context.Managers.FirstOrDefault(manager => manager.Id == id);
-            if (manager == null)
-            {
-                return NotFound();
-            }
-            _context.Remove(manager);
-            _context.SaveChanges();
+            Result result = _service.DeleteManager(id);
+            if (result.IsFailed) return NotFound();
             return NoContent();
         }
     }

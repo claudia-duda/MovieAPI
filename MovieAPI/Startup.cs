@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MovieAPI.Data;
+using MovieAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,14 @@ namespace MovieAPI
             
                 options.UseLazyLoadingProxies().UseMySQL(Configuration.GetConnectionString("MovieConnection"))
             );
-            services.AddControllers();
+
+            services.AddScoped<MovieService, MovieService>();
+            services.AddScoped<TheaterService, TheaterService>();
+            services.AddScoped<ManagerService, ManagerService>();
+            services.AddScoped<AddressService, AddressService>();
+            services.AddScoped<SessionService, SessionService>();
+
+                services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieAPI", Version = "v1" });
