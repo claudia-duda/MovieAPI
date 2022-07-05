@@ -57,3 +57,7 @@ C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\obj\Debug\net5.0\UserAPI.genrunt
 C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\obj\Debug\net5.0\ref\UserAPI.dll
 C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\FluentResults.dll
 C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll

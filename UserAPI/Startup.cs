@@ -35,7 +35,11 @@ namespace UserAPI
             );
             services.AddIdentity<IdentityUser<int>, IdentityRole<int>>()
                 .AddEntityFrameworkStores<UserDbContext>();
+
             services.AddScoped<RegistrationService, RegistrationService>();
+            services.AddScoped<LoginService, LoginService>();
+            services.AddScoped<TokenService, TokenService>();
+            services.AddScoped<LogoutService, LogoutService>();
 
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
