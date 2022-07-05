@@ -61,3 +61,5 @@ C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\Microsoft.Ident
 C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\MailKit.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\UserAPI\bin\Debug\net5.0\MimeKit.dll
