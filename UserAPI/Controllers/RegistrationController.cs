@@ -25,7 +25,7 @@ namespace UserAPI.Controllers
             if (result.IsFailed) return StatusCode(500);
             return Ok(result.Successes.FirstOrDefault());
         }
-        [HttpGet("/confirmation")]
+        [HttpGet("confirmation")]
         public IActionResult ActiveUserAccount([FromQuery] ActiveAccountRequest request)
         {
             Result result = _service.ActiveAccountRequest(request);

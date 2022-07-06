@@ -16,7 +16,7 @@ namespace UserAPI.Models
             Remittee = new List<MailboxAddress>();
             Remittee.AddRange(remittee.Select(r => new MailboxAddress(r)));
             Subject = subject;
-            Content = $"http://localhost:6001/registration/confirmation/?AccountId={userId}&ActivationCode={code}";
+            Content = $"https://localhost:6001/registration/confirmation/?accountId={userId}&activationCode={code}";
         }
 
     }
