@@ -32,7 +32,7 @@ namespace MovieAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "admin, regular")]
+        [Authorize(Roles = "admin, regular", Policy = "MinimumAge")]
         public IActionResult GetMovies([FromQuery] int? classification)
         {
             List<ReadMovieDTO> moviesDTO =_service.GetMovies(classification);

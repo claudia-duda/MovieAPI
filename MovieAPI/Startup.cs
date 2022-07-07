@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MovieAPI.Authorization;
 using MovieAPI.Data;
 using MovieAPI.Services;
 using System;
@@ -59,15 +61,23 @@ namespace MovieAPI
                     };
 
                 });
-            
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("MinimumAge", policy =>
+                {
+                    policy.Requirements.Add(new MinimumAgeRequirement(18));
+                });
+            });
+            services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
+
+            services.AddControllers();
             services.AddScoped<MovieService, MovieService>();
             services.AddScoped<TheaterService, TheaterService>();
             services.AddScoped<ManagerService, ManagerService>();
             services.AddScoped<AddressService, AddressService>();
             services.AddScoped<SessionService, SessionService>();
 
-                services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieAPI", Version = "v1" });

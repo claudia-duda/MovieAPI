@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace UserAPI.Data.Dtos
 {
@@ -15,6 +16,9 @@ namespace UserAPI.Data.Dtos
         public string Password { get; set; }
 
         [Required]
-        public string RePassword { get; set; }  
+        public string RePassword { get; set; }
+        
+        [Required]
+        public DateTime BirthDate { get; set; }
     }
 }

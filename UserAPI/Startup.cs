@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UserAPI.Data;
+using UserAPI.Models;
 using UserAPI.Services;
 
 namespace UserAPI
@@ -33,7 +34,7 @@ namespace UserAPI
             services.AddDbContext<UserDbContext>(options =>
                 options.UseMySQL(Configuration.GetConnectionString("UserConnection"))
             );
-            services.AddIdentity<IdentityUser<int>, IdentityRole<int>>(
+            services.AddIdentity<CustomIdentityUser, IdentityRole<int>>(
                 opt => opt.SignIn.RequireConfirmedEmail = true
                 )
                 .AddEntityFrameworkStores<UserDbContext>()

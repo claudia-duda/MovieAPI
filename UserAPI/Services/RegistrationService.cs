@@ -14,25 +14,22 @@ namespace UserAPI.Services
     public class RegistrationService
     {
         private IMapper _mapper;
-        private UserManager<IdentityUser<int>> _userManager;
+        private UserManager<CustomIdentityUser> _userManager;
         private EmailService _emailService;
-        private RoleManager<IdentityRole<int>> _roleManager;
 
         public RegistrationService(IMapper mapper,
-            UserManager<IdentityUser<int>> userManager,
-            EmailService emailService,
-            RoleManager<IdentityRole<int>> roleManager)
+            UserManager<CustomIdentityUser> userManager,
+            EmailService emailService)
         {
             _mapper = mapper;
             _userManager = userManager;
             _emailService = emailService;
-            _roleManager = roleManager;
         }
 
         public Result AddUser(CreateUserDTO createDto)
         {
             User user = _mapper.Map<User>(createDto);
-            IdentityUser<int> userIdentity = _mapper.Map<IdentityUser<int>>(user);
+            CustomIdentityUser userIdentity = _mapper.Map<CustomIdentityUser>(user);
 
             Task<IdentityResult> resultIdentity = _userManager
                 .CreateAsync(userIdentity , createDto.Password);
