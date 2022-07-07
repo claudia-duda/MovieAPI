@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentResults;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieAPI.Data;
 using MovieAPI.Data.Dtos;
@@ -22,6 +23,7 @@ namespace MovieAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public IActionResult PostMovie([FromBody] CreateMovieDTO movieDto)
         {
             ReadMovieDTO readDto = _service.AddMovie(movieDto);
@@ -30,6 +32,7 @@ namespace MovieAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, regular")]
         public IActionResult GetMovies([FromQuery] int? classification)
         {
             List<ReadMovieDTO> moviesDTO =_service.GetMovies(classification);

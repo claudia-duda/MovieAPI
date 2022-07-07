@@ -51,3 +51,12 @@ C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\obj\Debug\net5.0\MovieAPI.genru
 C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\obj\Debug\net5.0\ref\MovieAPI.dll
 C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\FluentResults.dll
 C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\cemr\Documents\estudo\MovieAPI\MovieAPI\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll

@@ -16,12 +16,17 @@ namespace UserAPI.Services
         private IMapper _mapper;
         private UserManager<IdentityUser<int>> _userManager;
         private EmailService _emailService;
+        private RoleManager<IdentityRole<int>> _roleManager;
 
-        public RegistrationService(IMapper mapper, UserManager<IdentityUser<int>> userManager, EmailService emailService)
+        public RegistrationService(IMapper mapper,
+            UserManager<IdentityUser<int>> userManager,
+            EmailService emailService,
+            RoleManager<IdentityRole<int>> roleManager)
         {
             _mapper = mapper;
             _userManager = userManager;
             _emailService = emailService;
+            _roleManager = roleManager;
         }
 
         public Result AddUser(CreateUserDTO createDto)
@@ -31,9 +36,10 @@ namespace UserAPI.Services
 
             Task<IdentityResult> resultIdentity = _userManager
                 .CreateAsync(userIdentity , createDto.Password);
-
+            
             if (resultIdentity.Result.Succeeded)
             {
+                _userManager.AddToRoleAsync(userIdentity, "regular");
                 string code = _userManager
                     .GenerateEmailConfirmationTokenAsync(userIdentity).Result;
                 var encodedCode = HttpUtility.UrlEncode(code);

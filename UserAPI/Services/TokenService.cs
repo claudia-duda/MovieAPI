@@ -10,12 +10,13 @@ namespace UserAPI.Services
 {
     public class TokenService
     {
-        public Token CreateToken(IdentityUser<int> user)
+        public Token CreateToken(IdentityUser<int> user, string role)
         {
             Claim[] rightsUser = new Claim[]
             {
                 new Claim("username", user.UserName),
-                new Claim("id", user.Id.ToString())
+                new Claim("id", user.Id.ToString()),
+                new Claim(ClaimTypes.Role, role)
             };
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes("0asdjas09djsa09djasdjsadajsd09asjd09sajcnzxn")
